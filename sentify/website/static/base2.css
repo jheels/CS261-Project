@@ -1,4 +1,29 @@
+@import url("variables.css");
+
 body, html {
     margin: 0;
     padding: 0;
+}
+
+.side-menu-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 6em;
+    border-top-right-radius: 3em;
+    border-bottom-right-radius: 3em;
+    background-color: var(--dark-blue);
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.bi-chevron-right {
+    position: absolute;
+    right: 25%;
+    width: 2em;
+    height: 2em;
+    fill: white;
 }

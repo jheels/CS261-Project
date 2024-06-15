@@ -1,9 +1,10 @@
+@import url("variables.css");
 @import url("https://fonts.googleapis.com/css?family=Inter:300,400,200|Roboto:700,200,400");
 
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #8dc6ff;
+    background-color: var(--baby-blue);
     position: sticky;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -12,7 +13,7 @@
 
 .navbar-title {
     font-size: 32px;
-    color: #f7f7f7;
+    color: var(--just-white);
     text-decoration: none;
     font-family: 'Inter', Helvetica, sans-serif;
     font-weight: 400;
@@ -22,7 +23,7 @@
 } 
 
 .navbar-title:hover {
-    color: #34495e;
+    color: var(--darker-blue);
     cursor: pointer;
 }
 
@@ -35,7 +36,7 @@
 .navbar-button {
     font-size: 14px;
     font-family: 'Inter', Helvetica, sans-serif;
-    background-color: #34495e;
+    background-color: var(--dark-blue);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -45,7 +46,7 @@
 }
 
 .navbar-button:hover {
-    background-color: #22313f;
+    background-color: var(--darker-blue);
     cursor: pointer;
 }
 
@@ -62,6 +63,7 @@
     width: 100%;
     border-radius: 20px;
     border: none;
+    outline: none;
     height: auto;
     box-shadow: none;
     font-family: 'Inter', 'Roboto', sans-serif;
