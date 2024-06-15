@@ -33,6 +33,10 @@ def on_join(data):
     """
     room = str(data['room'])
     join_room(room)
+    
+@views.route("/test")
+def test():
+    return render_template("base2.html")
 
 @views.route('/')
 def landing():
