@@ -36,4 +36,4 @@ def update_companies(do_backlog=False):
 
 if __name__ == "__main__":
     socketio.start_background_task(update_companies)
-    socketio.run(app)
+    socketio.run(app, debug=True)

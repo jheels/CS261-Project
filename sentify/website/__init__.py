@@ -23,7 +23,7 @@ def create_app(config_object=None):
     if config_object is None:
         app.config['SECRET_KEY'] = "123"
         app.config['SECURITY_PASSWORD_SALT'] = "f36d7eda6b91ecaff1a9e7045529ec71"
-        app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://sql8687211:iwcRTfjlEi@sql8.freemysqlhosting.net:3306/sql8687211"
+        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://"
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
         app.config['MAIL_USERNAME'] = 'donotreplysentify@gmail.com'
@@ -42,9 +42,9 @@ def create_app(config_object=None):
     from . import models
     app.register_blueprint(views, url_prefix="/")
     
-    resetdb = False
+    resetdb = True
     if app.config['TESTING'] is True:
-        resetdb = True
+        resetdb = False
     if resetdb:
         with app.app_context():
             for _ in range(3):
