@@ -1,0 +1,23 @@
+{% extends "base2.html" %}
+
+{% block title %} Sentify {% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='landing_page.css') }}">
+{% endblock %}
+{% block content %}
+<div class="landing-page">
+    <div class="landing-page-content">
+        <div class="landing-page-title">
+            <h1>Predicting <span id="dynamic-word">Opinion</span><span class="cursor"></span><br>Easily Done.</h1>
+        </div>
+        <div class="landing-page-description">
+            <p>This is dummy text, Get the latest sentiment analysis for any company in real-time. Sentify uses machine learning to predict the sentiment of any company based on news articles, tweets, and other sources.</p>
+        </div>
+        <div class="landing-page-buttons">
+            <a href="/register" class="landing-page-button">Join Us</a>
+        </div>
+    <div class="scroll-indicator"></div>
+    </div>
+</div>
+<script src="/static/scripts/landing_page.js"></script>
+{% endblock %}

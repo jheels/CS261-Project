@@ -17,13 +17,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='toastr.css') }}">
 </head>
+<!-- Need to add authentication parts -->
 <body>
     <div class="navbar">
             <a href="/" class="navbar-title">Sentify</a> 
-        <div class="navbar-search">
-            <input id="search-input" type="text" placeholder="Search..." />
-            <div id="results" class="search-results"></div>
-        </div>
+        {% if current_user.is_authenticated %}
+            <div class="navbar-search">
+                <input id="search-input" type="text" placeholder="Search..." />
+                <div id="results" class="search-results"></div>
+            </div>
+        {% endif %}
         <div class="navbar-buttons">
             <a href="/login" class="navbar-button">Login</a>
             <a href="/register" class="navbar-button">Join Us</a>
@@ -67,6 +70,9 @@
             About
         </a>
     </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
     <script src="/static/scripts/sidebar.js"></script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+/* General body styling */
+body {
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+}
+
+/* Landing page specific styling */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 1.5em;
+    height: inherit;
+
+}
+
+.landing-page-content {
+    max-width: 1000px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.landing-page-title h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    background-clip: text;
+    /* Added gradient and increased font size for impact */
+    color: transparent; /* Make the text color transparent to show the gradient */
+    font-size: 6em; /* Increased font size */
+    margin-bottom: 0.5em;
+
+}
+
+.landing-page-description {
+    width: 75%;
+    align-items: center; /* Center its children horizontally */
+    justify-content: center; /* Center its children vertically */
+    margin: auto;
+}
+
+.landing-page-description p {
+    margin-bottom: 30px;
+    color: var(--darker-blue);
+    font-size: 2em; /* Increased font size for impact */
+    text-align: center;
+}
+
+.landing-page-buttons a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 0.75em 1.5em;
+    border-radius: 0.5em;
+    margin: 0 1em;
+    transition: background-color 0.3s ease;
+    font-size: 2em; /* Increased font size for buttons */
+    font-weight: 500; /* Added font weight */
+    font
+}
+
+.landing-page-buttons a:hover {
+    background-color: #0056b3;
+}
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px; /* Adjust based on your footer's height */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid #007bff; /* Use your theme's primary color */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.scroll-indicator::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #007bff;
+    border-right: 2px solid #007bff;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    25% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(0);
+    }
+    75% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: black;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    border-left: 2px solid;
+}
+
+@keyframes blink {
+    0%, 100% { background-color: black; }
+    50% { background-color: transparent; }
+}

@@ -6,7 +6,7 @@
     justify-content: space-between;
     background-color: var(--baby-blue);
     position: sticky;
-    padding: 20px;
+    padding: 1em 5em;
     border-radius: 0 0 5px 0;
 }
 
@@ -19,7 +19,7 @@
     font-style: oblique;
     letter-spacing: 0.03em;
     margin-left: 0.1em;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 } 
 
 .navbar-title:hover {
@@ -39,7 +39,7 @@
     background-color: var(--dark-blue);
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 0.5em;
     font-weight: 300;
     padding: 12px 24px;
     transition: background-color 0.3s ease;
