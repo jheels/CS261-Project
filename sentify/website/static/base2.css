@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body, html {
     height: 100%;
     margin: 0;
@@ -23,6 +22,7 @@ body, html {
 
 .side-menu.open {
     transform: translateX(0%);
+    box-shadow: 10px 0 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .side-menu-toggle {
@@ -47,4 +47,29 @@ body, html {
     width: 1.75em;
     height: 1.75em;
     fill: white;
+}
+
+.side-menu-item {
+    display: block;
+    width: 100%;
+    color:white;
+    background-color: var(--dark-blue);
+    text-decoration: none ;
+    padding: 1em 2em 1em 0.5em;
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-size: 1.25em;
+    font-weight: 500;
+}
+
+.side-menu-item:hover {
+    background-color: var(--darker-blue);
+    cursor: pointer;
+}
+
+.side-menu-item svg {
+    width: 1em;
+    height: 1em;
+    fill: white;
+    margin-right: 1em;
+    margin-left: 0.5em;
 }

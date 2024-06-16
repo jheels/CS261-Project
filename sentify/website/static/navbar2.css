@@ -7,8 +7,7 @@
     background-color: var(--baby-blue);
     position: sticky;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 0;
 }
 
 .navbar-title {
@@ -17,13 +16,14 @@
     text-decoration: none;
     font-family: 'Inter', Helvetica, sans-serif;
     font-weight: 400;
+    font-style: oblique;
     letter-spacing: 0.03em;
-    margin-left: 10px;
+    margin-left: 0.1em;
     transition: color 0.3s ease;
 } 
 
 .navbar-title:hover {
-    color: var(--darker-blue);
+    color: var(--dark-blue);
     cursor: pointer;
 }
 
@@ -69,5 +69,4 @@
     font-family: 'Inter', 'Roboto', sans-serif;
     font-size: 1em;
     font-weight: 500;
-    font-style: italic;
 }
