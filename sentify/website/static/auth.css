@@ -148,7 +148,6 @@
 }
 
 #passwordCriteria {
-    display: none; /* Hide by default */
     position: absolute; /* Position it on top of other content */
     background-color: white; /* Background color */
     border: 1px solid #ccc; /* Border */
@@ -160,9 +159,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add some shadow */
+    opacity: 0;
+    visibility: hidden;
     filter: none;
     pointer-events: none; /* Prevents interaction when invisible */
     font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Add transition effect */
 }
 
 .criteria {

@@ -37,15 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const passwordInput = document.querySelector('input[name="password"]');
   const passwordCriteria = document.getElementById('passwordCriteria');
 
-  // Show the password criteria overlay when the password field is focused
   passwordInput.addEventListener('focus', function() {
-      passwordCriteria.style.display = 'block';
-      passwordCriteria.classList.add('visible');
+      passwordCriteria.style.opacity = '1';
+      passwordCriteria.style.visibility = 'visible';
   });
 
-  // Hide the password criteria overlay when the password field loses focus
   passwordInput.addEventListener('blur', function() {
-      passwordCriteria.style.display = 'none';
-      passwordCriteria.classList.remove('visible');
+      passwordCriteria.style.opacity = '0';
+      passwordCriteria.style.visibility = 'hidden';
   });
 });
