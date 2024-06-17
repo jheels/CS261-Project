@@ -10,7 +10,6 @@ body {
     align-items: center;
     padding: 3em 1.5em;
     height: inherit;
-
 }
 
 .landing-page-content {
@@ -31,7 +30,7 @@ body {
 }
 
 .landing-page-description {
-    width: 75%;
+    width: 90%;
     align-items: center; /* Center its children horizontally */
     justify-content: center; /* Center its children vertically */
     margin: auto;
@@ -40,7 +39,7 @@ body {
 .landing-page-description p {
     margin-bottom: 30px;
     color: var(--darker-blue);
-    font-size: 2em; /* Increased font size for impact */
+    font-size: 1.75em; /* Increased font size for impact */
     text-align: center;
 }
 
@@ -51,11 +50,10 @@ body {
     color: white;
     padding: 0.75em 1.5em;
     border-radius: 0.5em;
-    margin: 0 1em;
+    margin: 0.5em 1em;
     transition: background-color 0.3s ease;
     font-size: 2em; /* Increased font size for buttons */
     font-weight: 500; /* Added font weight */
-    font
 }
 
 .landing-page-buttons a:hover {
@@ -105,13 +103,13 @@ body {
     display: inline-block;
     width: 2px;
     height: 1em;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.1);
     margin-left: 2px;
     animation: blink 1s step-end infinite;
     border-left: 2px solid;
 }
 
 @keyframes blink {
-    0%, 100% { background-color: black; }
+    0%, 100% { background-color: rgba(0, 0, 0, 0.75);; }
     50% { background-color: transparent; }
 }

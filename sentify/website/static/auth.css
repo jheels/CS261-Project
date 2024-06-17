@@ -1,0 +1,178 @@
+
+.reg-container {
+    border-radius: 5px;
+    background-color: white;
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-title {
+    font-weight: 700;
+    text-align: center;
+    padding-top: 0.1em;
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    background-clip: text;
+    color: transparent; /* Make the text color transparent to show the gradient */
+}
+
+.reg-forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.manual-reg-form {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.reg-info {
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.manual-reg-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.manual-reg-form input {
+    margin: 12px auto;
+    border: 0.5px solid #ccc; /* Use a transparent border */
+    border-radius: 5px;
+    width: 100%;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.manual-reg-form input:focus {
+    border-bottom: 2px solid #ccc; /* Example: Makes the bottom border bolder and changes color to blue */
+    outline: none; /* Removes the default focus outline */
+    padding-bottom: 19px; /* Example: Adds a small padding to the bottom of the input */
+}
+
+.manual-reg-form label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 8px; /* Adjust as needed */
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+}
+
+#showPasswordCheckbox {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+}
+
+.visual-text {
+    font-size: 12px;
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    margin-top: 18px;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+}
+
+.link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.reg-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 20px 40px;
+    font: 500 16px 'Inter', 'Roboto', sans-serif;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reg-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.vertical-line {
+    border-left: 2px solid #ccc;
+    height: 80%;
+    margin-bottom: 50px; /* Adjust as needed */
+}
+
+.sso-reg-form {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.sso-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.g_id_signin {
+    font-size: 20px; /* Increase font size for larger text */
+    padding: 15px 30px; /* Increase padding for a larger button */
+    transform: scale(1.5) translateY(-50%); /* Increase button size */
+
+}
+
+#passwordCriteria {
+    display: none; /* Hide by default */
+    position: absolute; /* Position it on top of other content */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px;
+    padding: 15px; /* Padding */
+    z-index: 10; /* Ensure it's on top */
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add some shadow */
+    filter: none;
+    pointer-events: none; /* Prevents interaction when invisible */
+    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+}
+
+.criteria {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Space between criteria text and emoji */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 5px; /* Keeps existing bottom margin */
+}
+
+.emoji {
+    min-width: 20px; /* Ensures emojis are aligned even if some criteria don't have an emoji */
+    text-align: right; /* Aligns the emoji to the right */
+}

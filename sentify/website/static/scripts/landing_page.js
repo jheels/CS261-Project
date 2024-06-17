@@ -9,7 +9,6 @@ function typeEffect(elementId, sentences, typingSpeed = 100, pauseBetweenSentenc
         if (sentenceIndex === sentences.length) {
             sentenceIndex = 0; // Loop back to the first sentence
         }
-
         currentSentence = sentences[sentenceIndex];
 
         if (!isDeleting) {
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phrases = [
         'Opinion?',
         'Impact?',
-        'Change?'
+        'Reaction?'
     ];
     typeEffect('dynamic-word', phrases);
 });
