@@ -1,3 +1,4 @@
+@import url("variables.css");
 
 .reg-container {
     border-radius: 5px;
@@ -14,7 +15,7 @@
     font-weight: 700;
     text-align: center;
     padding-top: 0.1em;
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-family: var(--inter-family);
     background: linear-gradient(90deg, #007bff, #00bfff);
     background-clip: text;
     color: transparent; /* Make the text color transparent to show the gradient */
@@ -38,7 +39,7 @@
 }
 
 .reg-info {
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-family: var(--inter-family);
     font-size: 24px;
     margin: 20px 0;
 }
@@ -53,6 +54,17 @@
 }
 
 .manual-reg-form input {
+    position: relative;
+    margin: 12px auto;
+    border: 0.5px solid #ccc; /* Use a transparent border */
+    border-radius: 5px;
+    width: 100%;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.manual-reg-form input {
+    position: relative;
     margin: 12px auto;
     border: 0.5px solid #ccc; /* Use a transparent border */
     border-radius: 5px;
@@ -71,8 +83,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-top: 8px; /* Adjust as needed */
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    margin-top: 12px; /* Adjust as needed */
+    font-family: var(--inter-family);
 }
 
 #showPasswordCheckbox {
@@ -84,14 +96,14 @@
 
 .visual-text {
     font-size: 12px;
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-family: var(--inter-family);
     margin-top: 18px;
 }
 
 .link {
     color: #007bff;
     text-decoration: none;
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
+    font-family: var(--inter-family);
 }
 
 .link:hover {
@@ -104,7 +116,7 @@
     color: white;
     border-radius: 5px;
     padding: 20px 40px;
-    font: 500 16px 'Inter', 'Roboto', sans-serif;
+    font: 500 16px var(--inter-family);
     cursor: pointer;
     border: none;
     margin-top: 30px;
@@ -116,65 +128,46 @@
     transform: scale(1.05);
 }
 
-.vertical-line {
-    border-left: 2px solid #ccc;
-    height: 80%;
-    margin-bottom: 50px; /* Adjust as needed */
-}
-
-.sso-reg-form {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    justify-content: center;
-}
-
-.sso-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.g_id_signin {
-    font-size: 20px; /* Increase font size for larger text */
-    padding: 15px 30px; /* Increase padding for a larger button */
-    transform: scale(1.5) translateY(-50%); /* Increase button size */
-
-}
-
 #passwordCriteria {
-    position: absolute; /* Position it on top of other content */
-    background-color: white; /* Background color */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px;
-    padding: 15px; /* Padding */
-    z-index: 10; /* Ensure it's on top */
-    width: 300px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add some shadow */
-    opacity: 0;
-    visibility: hidden;
-    filter: none;
-    pointer-events: none; /* Prevents interaction when invisible */
-    font-family: 'Inter', 'Roboto', Helvetica, sans-serif;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Add transition effect */
-}
-
-.criteria {
-    display: flex; /* Use Flexbox */
+    overflow: hidden;
+    max-height: 0;
+    flex-direction: column;
     justify-content: space-between; /* Space between criteria text and emoji */
     align-items: center; /* Center items vertically */
     margin-bottom: 5px; /* Keeps existing bottom margin */
+    width: 100%;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s linear;
 }
 
-.emoji {
-    min-width: 20px; /* Ensures emojis are aligned even if some criteria don't have an emoji */
-    text-align: right; /* Aligns the emoji to the right */
+.criteria {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    font-family: var(--inter-family);
+    font-weight: 500;
+    font-size: small;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.criteria-row {
+    display: flex;
+    width: 100%;
+}
+
+.criteria.valid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.criteria.invalid {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-danger {
+    color: red;
+    font-size: 14px;
+    font-family: var(--inter-family);
 }

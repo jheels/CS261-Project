@@ -1,49 +1,55 @@
 function togglePasswordVisibility() {
-    var password = document.getElementsByName('password')[0];
-    var confirm_password = document.getElementsByName('confirm_password')[0];
-    if (password.type === 'password') {
-      password.type = 'text';
-      confirm_password.type = 'text';
-    } else {
-      password.type = 'password';
-      confirm_password.type = 'password';
+  const password = document.getElementsByName('password')[0];
+  const confirm_password = document.getElementsByName('confirm_password')[0];
+  const newType = password.type === 'password' ? 'text' : 'password';
+
+  password.type = newType;
+  confirm_password.type = newType;
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const password = document.getElementsByName("password")[0];
+    const confirm_password = document.getElementsByName("confirm_password")[0];
+    const password_match = document.getElementById("password_match");
+    const passwordCriteria = document.getElementById("passwordCriteria");
+  
+    function validatePassword() {
+      password_match.style.display = (password.value !== confirm_password.value && confirm_password.value.length > 0) ? "flex" : "none";
     }
-  }
+  
+    function updatePasswordCriteria() {
+      const criteriaChecks = {
+        'lengthCheck': password.value.length >= 8,
+        'lowercaseCheck': /[a-z]/.test(password.value),
+        'uppercaseCheck': /[A-Z]/.test(password.value),
+        'numberCheck': /\d/.test(password.value),
+        'specialCheck': /[!@#$%^&*(),.?":{}|<>]/.test(password.value)
+      };
+      Object.keys(criteriaChecks).forEach(criteria => updateCriteria(criteria, criteriaChecks[criteria]));
+    }
+  
+    function updateCriteria(criteria, isValid) {
+      const element = document.getElementById(criteria);
+      element.classList.toggle("valid", isValid);
+      element.classList.toggle("invalid", !isValid);
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const passwordInput = document.querySelector('input[name="password"]');
-  passwordInput.addEventListener('keyup', updatePasswordCriteria);
-
-  function updatePasswordCriteria() {
-      const password = passwordInput.value;
-      // Define the emojis
-      const tickEmoji = '✅';
-      const crossEmoji = '❌';
-
-      // Minimum 8 characters
-      document.getElementById('lengthCheck').innerHTML = password.length >= 8 ? tickEmoji : crossEmoji;
-      // At least one lowercase letter
-      document.getElementById('lowercaseCheck').innerHTML = /[a-z]/.test(password) ? tickEmoji : crossEmoji;
-      // At least one uppercase letter
-      document.getElementById('uppercaseCheck').innerHTML = /[A-Z]/.test(password) ? tickEmoji : crossEmoji;
-      // At least one number
-      document.getElementById('numberCheck').innerHTML = /\d/.test(password) ? tickEmoji : crossEmoji;
-      // At least one special character
-      document.getElementById('specialCheck').innerHTML = /[!@#$%^&*(),.?":{}|<>]/.test(password) ? tickEmoji : crossEmoji;
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const passwordInput = document.querySelector('input[name="password"]');
-  const passwordCriteria = document.getElementById('passwordCriteria');
-
-  passwordInput.addEventListener('focus', function() {
-      passwordCriteria.style.opacity = '1';
-      passwordCriteria.style.visibility = 'visible';
+    function showPasswordCriteria() {
+      passwordCriteria.style.maxHeight = "300px"; // Adjust this value based on the content size
+      passwordCriteria.style.opacity = "1";
+      passwordCriteria.style.visibility = "visible";
+    }
+    
+    function hidePasswordCriteria() {
+      passwordCriteria.style.maxHeight = "0";
+      passwordCriteria.style.opacity = "0";
+      passwordCriteria.style.visibility = "hidden";
+    }
+    
+    // Update event listeners
+    password.onfocus = showPasswordCriteria;
+    password.onblur = hidePasswordCriteria;
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+    password.onkeyup = updatePasswordCriteria;
   });
-
-  passwordInput.addEventListener('blur', function() {
-      passwordCriteria.style.opacity = '0';
-      passwordCriteria.style.visibility = 'hidden';
-  });
-});
