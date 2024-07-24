@@ -38,12 +38,6 @@
     margin: 0 auto;
 }
 
-.reg-info {
-    font-family: var(--inter-family);
-    font-size: 24px;
-    margin: 20px 0;
-}
-
 .manual-reg-form form {
     display: flex;
     flex-direction: column;
@@ -79,20 +73,29 @@
     padding-bottom: 19px; /* Example: Adds a small padding to the bottom of the input */
 }
 
-.manual-reg-form label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 12px; /* Adjust as needed */
-    font-family: var(--inter-family);
+.checkbox-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 200px;
 }
 
-#showPasswordCheckbox {
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    margin: 0 10px;
+.checkbox-container input[type="checkbox"] {
+    width: auto; /* Reset the width */
+    display: inline; /* Override display: block; */
+    box-shadow: none;
+    margin-right: 10%;
+    transform: scale(1.5);
 }
+
+.checkbox-container label {
+font-size: 16px;
+line-height: 1.5;
+display: inline; /* Make the label inline */
+font-family: 'Inter', 'Roboto', sans-serif;
+margin-left: 10%;
+}
+
 
 .visual-text {
     font-size: 12px;

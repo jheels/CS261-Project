@@ -9,18 +9,17 @@
     <h1 class="reg-title">Register</h1>
     <div class="reg-forms">
         <div class="manual-reg-form">
-            <h2 class="reg-info">Enter your details</h2> <!-- need to change this -->
-            <form action="" method="post">
-                <input type="text" name="name" placeholder="First Name" autocomplete="given-name" maxlength="16" required>
-                {% with messages = get_flashed_messages(category_filter=["name_error"]) %}
+            <form action="" method="POST">
+                {% with messages = get_flashed_messages(category_filter=["error"]) %}
                     {% if messages %}
                     <div class="alert-danger">
                         {{ messages[0] }}
                     </div>
                     {% endif %}
                 {% endwith %}    
+                <input type="text" name="name" placeholder="First Name" autocomplete="given-name" maxlength="16" required>
                 <input type="email" name="email" placeholder="Email" autocomplete="email" maxlength="48" required> 
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
                 <div id="passwordCriteria">
                     <div class="criteria" id="lengthCheck">Min. 8 characters</div>
                     <div class="criteria-row">
@@ -32,19 +31,20 @@
                         <div class="criteria" id="specialCheck">One special character</div>
                     </div>
                 </div>
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required> 
-                <div class="alert-danger" id="password_match" style="display: none">Passwords do not match!</div>
-                <label for="showPasswordCheckbox">Show Password
-                    <input label='show password checkbox' type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">    
-                </label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="new-password" required> 
+                <div class="alert-danger" id="passwordMatch" style="display: none">Passwords do not match!</div>
+                <div class="checkbox-container">
+                    <label for="showPasswordCheckbox">Show Password</label>
+                    <input name="showPassword" type="checkbox" onclick="togglePasswordVisibility()">    
+                </div>
                 <div class="visual-text"> 
                     Already have an account? <a class="link" href="/login">Login here</a> 
                 </div>
-                <button type="submit" class="reg-button">Get Started</button> 
+                <button type="submit" id="getStartedButton" class="reg-button">Get Started</button> 
             </form>
         </div>
     </div>
 
 </div>
-<script src="/static/scripts/register.js"></script>
+<script src="/static/scripts/auth.js"></script>
 {% endblock %}
