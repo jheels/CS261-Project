@@ -10,16 +10,23 @@
     <div class="reg-forms">
         <div class="manual-reg-form">
             <form action="" method="POST">
-                {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                <input type="text" name="name" placeholder="First Name" autocomplete="given-name" maxlength="16" required>
+                {% with messages = get_flashed_messages(category_filter=["name_error"]) %}
                     {% if messages %}
-                    <div class="alert-danger">
+                    <div class="criteria">
                         {{ messages[0] }}
                     </div>
                     {% endif %}
                 {% endwith %}    
-                <input type="text" name="name" placeholder="First Name" autocomplete="given-name" maxlength="16" required>
                 <input type="email" name="email" placeholder="Email" autocomplete="email" maxlength="48" required> 
-                <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+                {% with messages = get_flashed_messages(category_filter=["email_error"]) %}
+                    {% if messages %}
+                    <div class="criteria">
+                        {{ messages[0] }}
+                    </div>
+                    {% endif %}
+                {% endwith %}    
+                <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>  
                 <div id="passwordCriteria">
                     <div class="criteria" id="lengthCheck">Min. 8 characters</div>
                     <div class="criteria-row">
@@ -32,7 +39,14 @@
                     </div>
                 </div>
                 <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="new-password" required> 
-                <div class="alert-danger" id="passwordMatch" style="display: none">Passwords do not match!</div>
+                {% with messages = get_flashed_messages(category_filter=["pw_match_error"]) %}
+                    {% if messages %}
+                    <div class="criteria">
+                        {{ messages[0] }}
+                    </div>
+                    {% endif %}
+                {% endwith %}   
+                <div class="criteria" id="passwordMatch" style="display: none">Passwords do not match!</div>
                 <div class="checkbox-container">
                     <label for="showPasswordCheckbox">Show Password</label>
                     <input name="showPassword" type="checkbox" onclick="togglePasswordVisibility()">    

@@ -13,17 +13,13 @@
                 <input type="email" name="email" placeholder="Email" autocomplete="email" maxlength="48" required> 
                 {% with messages = get_flashed_messages(category_filter=["verify_error"]) %}
                     {% if messages %}
-                    <div class="alert">
-                        {{ messages[0] }}
-                    </div>
+                    <div class="criteria">{{ messages[0] }}</div>
                     {% endif %}
                 {% endwith %}    
                 <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
                 {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
                     {% if messages %}
-                    <div class="alert">
-                        {{ messages[0] }}
-                    </div>
+                    <div class="criteria">{{ messages[0] }}</div>
                     {% endif %}
                 {% endwith %}    
                 <div class="checkbox-container">
@@ -35,7 +31,7 @@
                     <input type="checkbox" name="remember">
                 </div>
                 <div class="visual-text"> 
-                    Don't have an account? <a class="link" href="/login">Join here!</a> 
+                    Don't have an account? <a class="link" href="/register">Join here!</a> 
                 </div>
                 <button type="submit" id="getStartedButton" class="reg-button">Sign In</button> 
             </form>
