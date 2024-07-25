@@ -1,56 +1,43 @@
-{% extends "base.html" %}
-{% block title %} Sentify - Login {% endblock %}
+{% extends "base2.html" %}
+
+{% block title %} Login {% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='auth.css') }}">
 {% endblock %}
 {% block content %}
-<div class="form-container">
-    <h2 class="site-title">Login</h2>
-    <form action="" method="POST">
-        <!-- Make sure to update the action attribute to the correct endpoint -->
-        <div class="input-group">
-            <input type="email" name="email" placeholder="Email" autocomplete="email" maxlength="48" required>
+<div class="reg-container">
+    <h1 class="reg-title">Login</h1>
+    <div class="reg-forms">
+        <div class="manual-reg-form">
+            <form action="" method="POST"> 
+                <input type="email" name="email" placeholder="Email" autocomplete="email" maxlength="48" required> 
+                {% with messages = get_flashed_messages(category_filter=["verify_error"]) %}
+                    {% if messages %}
+                    <div class="criteria">{{ messages[0] }}</div>
+                    {% endif %}
+                {% endwith %}    
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
+                    {% if messages %}
+                    <div class="criteria">{{ messages[0] }}</div>
+                    {% endif %}
+                {% endwith %}    
+                <div class="checkbox-container">
+                    <label for="showPasswordCheckbox">Show Password</label>
+                    <input name="showPassword" type="checkbox" onclick="togglePasswordVisibility()">    
+                </div>
+                <div class="checkbox-container">
+                    <label for="rememberMeCheckbox">Remember Me</label>
+                    <input type="checkbox" name="remember">
+                </div>
+                <div class="visual-text"> 
+                    Don't have an account? <a class="link" href="/register">Join here!</a> 
+                </div>
+                <button type="submit"  class="reg-button">Sign In</button> 
+            </form>
         </div>
-        {% with messages = get_flashed_messages(category_filter=["verify_error"]) %}
-            {% if messages %}
-            <div class="alert">
-                {{ messages[0] }}
-            </div>
-            {% endif %}
-        {% endwith %}
-        <div class="input-group">
-            <input type="password" id="loginPassword" name="password" placeholder="Password" required>
-        </div>
-        {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
-            {% if messages %}
-            <div class="alert">
-                {{ messages[0] }}
-            </div>
-            {% endif %}
-        {% endwith %}
-        <div class="input-group">
-            <label for="showPasswordCheckbox">Show Password</label>
-            <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
-        </div>
-        <div class="input-group">
-            <label for="rememberMeCheckbox">Remember Me</label>
-            <input type="checkbox" name="remember">
-        </div>
-        <div class="visual-text">
-            Don't have an account? <a class="link" href="/register">Register here</a>
-        </div>
-        <button type="submit" class="reg-button">Submit</button>
-    </form>
+    </div>
+
 </div>
-<script>
-    function togglePasswordVisibility() {
-        var password = document.getElementById("loginPassword");
-        var checkbox = document.getElementById("showPasswordCheckbox");
-        if (checkbox.checked) {
-            password.type = "text";
-        } else {
-            password.type = "password";
-        }
-    }
-</script>
+<script src="/static/scripts/auth.js"></script>
 {% endblock %}

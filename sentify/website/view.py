@@ -141,7 +141,7 @@ def register():
             else:
                 flash('Password does not meet criteria!', category='pw_error')
         
-    return render_template('register2.html')
+    return render_template('register.html')
 
 @views.route('/unconfirmed/')
 def unconfirmed():
@@ -225,7 +225,7 @@ def login():
                 flash("Email or password is incorrect!", category="login_error")
         else:
             flash("Email or password is incorrect!", category="login_error")
-    return render_template('login2.html')
+    return render_template('login.html')
 
 @views.route('/contact/', methods=['GET', 'POST'])
 def contact():
