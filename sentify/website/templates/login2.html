@@ -16,7 +16,7 @@
                     <div class="criteria">{{ messages[0] }}</div>
                     {% endif %}
                 {% endwith %}    
-                <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
                 {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
                     {% if messages %}
                     <div class="criteria">{{ messages[0] }}</div>
@@ -33,7 +33,7 @@
                 <div class="visual-text"> 
                     Don't have an account? <a class="link" href="/register">Join here!</a> 
                 </div>
-                <button type="submit" id="getStartedButton" class="reg-button">Sign In</button> 
+                <button type="submit"  class="reg-button">Sign In</button> 
             </form>
         </div>
     </div>

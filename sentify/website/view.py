@@ -36,7 +36,7 @@ def on_join(data):
     
 @views.route("/test")
 def test():
-    return render_template("base2.html")
+    return render_template("login2.html")
 
 @views.route('/')
 def landing():
@@ -108,50 +108,40 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
+        pattern = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-’/`~!#*$@_%+=.,^&(){}\[\]|;:”<>?\\]).+$"
 
         error_occurred = validate_min_form(name, email)
-
-        if password != confirm_password:
-            flash('Passwords do not match!', category='pw_match_error')
-            error_occurred = True
-        if len(password) < 8:
-            flash('Must have at least 8 characters!', category='pw_error')
-            error_occurred = True
-        if not re.search("[A-Z]", password):
-            flash('Must contain at least one uppercase letter!', category='pw_error')
-            error_occurred = True
-        if not re.search("[a-z]", password):
-            flash('Must contain at least one lowercase letter!', category='pw_error')
-            error_occurred = True
-        if not re.search("[0-9]", password):
-            flash('Must contain at least one number!', category='pw_error')
-            error_occurred = True
-        if not re.search("[!@#$%^&*()_+=-{};:'<>,.?/|`~]", password):
-            flash('Must contain at least one special character!', category='pw_error')
-            error_occurred = True
         if not error_occurred:
-            user_exists  = User.query.filter_by(email=email).first()
-            if user_exists:
-                flash("This email is already registered!", category="email_error")
-                return redirect(url_for("views.register"))
+            if password != confirm_password:
+                flash('Passwords do not match!', category='pw_match_error')
+                error_occurred = True
+            if len(password) < 8 or not re.match(pattern, password):
+                error_occurred = True
+            if not error_occurred:
+                user_exists  = User.query.filter_by(email=email).first()
+                if user_exists:
+                    flash("This email is already registered!", category="email_error")
+                    return redirect(url_for("views.register"))
 
-            new_user = User(firstname=name, email=email,
-                            password_hash=generate_password_hash(password))
-            token = generate_confirmation_token(email)
-            confirm_url = url_for('views.confirm_email', token=token, _external=True)
-            html = render_template('activate.html', confirm_url=confirm_url)
-            subject = "Please confirm your email - Sentify"
-            new_user.confirmation_token = token
-    
-            db.session.add(new_user)
-            db.session.commit()
+                new_user = User(firstname=name, email=email,
+                                password_hash=generate_password_hash(password))
+                token = generate_confirmation_token(email)
+                confirm_url = url_for('views.confirm_email', token=token, _external=True)
+                html = render_template('activate.html', confirm_url=confirm_url)
+                subject = "Please confirm your email - Sentify"
+                new_user.confirmation_token = token
+        
+                db.session.add(new_user)
+                db.session.commit()
 
-            send_email(subject, email, html)
-            session.clear() # ensures session is clean
+                send_email(subject, email, html)
+                session.clear() # ensures session is clean
 
-            return redirect(url_for("views.unconfirmed"))
-
-    return render_template('register.html')
+                return redirect(url_for("views.unconfirmed"))
+            else:
+                flash('Password does not meet criteria!', category='pw_error')
+        
+    return render_template('register2.html')
 
 @views.route('/unconfirmed/')
 def unconfirmed():
@@ -235,7 +225,7 @@ def login():
                 flash("Email or password is incorrect!", category="login_error")
         else:
             flash("Email or password is incorrect!", category="login_error")
-    return render_template('login.html')
+    return render_template('login2.html')
 
 @views.route('/contact/', methods=['GET', 'POST'])
 def contact():
